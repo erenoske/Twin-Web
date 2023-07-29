@@ -4,6 +4,7 @@ $uri = $_SERVER['REQUEST_URI'];
 $routes = [
     '/erendevyedek/erendev/' => 'index',
     '/erendevyedek/erendev/hakkimizda' => 'about',
+    '/erendevyedek/erendev/test' => 'test',
     // Gerektiğinde daha fazla rota ekleyin
 ];
 
@@ -15,6 +16,4 @@ $page = isset($routes[$route]) ? $routes[$route] : '404';
 
 // Seçilen sayfaya uygun içeriği dahil edin
 include __DIR__ . "/pages/{$page}.php";
-
-include __DIR__ . "/footer/footer.php";
 ?>
