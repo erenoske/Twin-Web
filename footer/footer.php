@@ -77,6 +77,50 @@
             </div>
           </footer>
           <script src="./public/js/header.js"></script>
-        <script src="./public/js/script.js"></script>
+          <script src="./public/js/script.js"></script>
+          <!-- Swiper JS -->
+          <script src="./public/js/swiper-bundle.min.js"></script>
+          <script>
+            var swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: true,
+            centerSlide: 'true',
+            fade: 'true',
+            grabCursor: 'true',
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+              dynamicBullets: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+        
+            breakpoints:{
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+            },
+  }        );
+          </script>
+          <script>
+            function toggleDropdown() {
+  const dropdownMenu = document.getElementById("dropdown-menu");
+  dropdownMenu.classList.toggle("active-dropdown");
+}
+
+function toggleDropdownMobile() {
+  const dropdownMenu = document.getElementById("dropdown-menu-mobile");
+  dropdownMenu.classList.toggle("active-dropdown");
+}
+          </script>
     </body>
 </html>

@@ -5,12 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./public/css/main.css" />
+    <link rel="stylesheet" href="./public/css/swiper-bundle.min.css" />
     <script src="./public/js/main.js"></script>
     <script src="./public/js/config.js"></script>
     <title><?php echo $baslik ?></title>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+    <script src='./public/js/jquery.min.js'></script>
+    <script src='./public/js/jquery-ui.min.js'></script>
     <script src="./public/js/navbar.js"></script>
+    <meta name="description" content="Twin Baby Spa, Bebeğinizin ve sizin en sağlıklı şekilde doğum sonrası ve öncesine hazırlıyoruz. Bununla birlikte Floating, Hypnobrithing ve Bebek Masajı gibi birçok alanda sizlere hizmet vermekteyiz.">
+    <meta name="tags" content="Twin Baby Spa, twin baby spa, twinbabyspa, twinbaby spa, bebek bakımı, bebek masajı, floating, emzirme desteği, hamile yoga, lohussa desteği, nefes teknikleri, yetişkin yoga, çocuk yoga, antalya bebek masaj, antalya bebek bakım, antalya bebek spa, antalya bebek spa, antalya bebek bakım, antalya bebek masajı, antalya bebek spa merkezi, antalya hamile yoga, antalya bebek spa, antalya bebek spa merkezi, antalya bebek spa fiyatları, bebek spa, bebek hidroterapi, bebek floating, bebek masajı, bebek jakuzi, bebek spa faydaları, bebek spa nedir, bebek spa ne işe yarar,baby spa">
+    <meta name="author" content="Eren İşgören">
+    <meta name="language" content="Turkish">
+    <meta name="revisit-after" content="1 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="google" content="notranslate">
+    <style>
+      .none {
+       display: none !important;
+      }
+      .active-dropdown {
+        display: block !important;
+      }
+    </style>
   </head>
 
     <body>
@@ -36,14 +56,25 @@
                    </div>
                   </a>
                   <!-- Menu Items -->
-                  <div class="hidden md:flex space-x-6">
-                    <a href="./hakkimizda" class="hover:text-darkGrayishBlue">Hakkımızda</a>
-                    <a href="#" class="hover:text-darkGrayishBlue">Hizmetlerimiz</a>
-                    <a href="#" class="hover:text-darkGrayishBlue">S.S.S</a>
-                    <a href="#" class="hover:text-darkGrayishBlue">İletişim</a>
+                  <div class="hidden lg:flex space-x-6">
+                    <a href="" class="hover:text-darkGrayishBlue"><?= __('Hakkımızda')?></a>
+                    <a href="#services" class="hover:text-darkGrayishBlue"><?= __('Hizmetlerimiz')?></a>
+                    <a href="#gallery" class="hover:text-darkGrayishBlue"><?= __('Galeri')?></a>
+                    <a href="#faq" class="hover:text-darkGrayishBlue"><?= __('S.S.S')?></a>
+                    <a href="#contact" class="hover:text-darkGrayishBlue"><?= __('İletişim')?></a>
+                    <a class="hover:text-darkGrayishBlue flex dropdown-heading cursor-pointer" onclick="toggleDropdown()">
+                    <?php if(!isset($_GET['lang']) || $_GET['lang'] == 'tr') {?><img src="./public/icon/tr.svg" class="w-4 h-4 rounded-full object-cover mt-1 mr-1" alt="Türkçe">TR <?php } ?>
+                    <?php if(@$_GET['lang'] == 'en') {?><img src="./public/icon/en.svg" class="w-4 h-4 rounded-full object-cover mt-1 mr-1" alt="English">ENG <?php } ?>
+                    <?php if(@$_GET['lang'] == 'ru') {?><img src="./public/icon/ru.svg" class="w-4 h-4 rounded-full object-cover mt-1 mb-1" style="border: 1px solid black;" alt="Türkçe">RU <?php } ?>
+                    <div id="dropdown-menu" class="absolute flex-col rounded-full items-center text-black self-end py-8 space-y-6 font-bold bg-white sm:w-auto sm:self-center drop-shadow-md md:w-28 flex none" style="bottom: -200px; right: 3%;">
+                        <a href="?lang=tr" class="link flex items-center" style="margin-top: 5px;"><img src="./public/icon/tr.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover" alt="Türkçe" onclick="toggleDropdown()">TR</a>
+                        <a href="?lang=en" class="link flex items-center"><img src="./public/icon/en.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1" alt="English">ENG</a>
+                        <a href="?lang=ru" class="link flex items-center"><img src="./public/icon/ru.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1 mb-1" style="border: 1px solid black;" alt="Türkçe">RU</a>
+                    </div>
+                    </a>
                   </div>
                   <!-- Hamburger Icon -->
-                  <button id="menu-btn" class="block hamburger md:hidden focus:outline-none float-right">
+                  <button id="menu-btn" class="block hamburger lg:hidden focus:outline-none float-right">
                    <span id="h-top" class="hamburger-top bg-white transition duration-300"></span>
                    <span id="h-middle" class="hamburger-middle bg-white transition duration-300"></span>
                    <span id="h-bottom" class="hamburger-bottom bg-white transition duration-300"></span>
@@ -52,13 +83,24 @@
               </div>
               <!-- Mobile Menu -->
               <div class="md:hidden">
-               <div id="menu" class="absolute flex-col items-center hidden text-black self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
-               <a href="./hakkimizda" class="hover:text-darkGrayishBlue">Hakkımızda</a>
-               <a href="#" class="hover:text-darkGrayishBlue">Hizmetlerimiz</a>
-               <a href="#" class="hover:text-darkGrayishBlue">S.S.S</a>
-               <a href="#" class="hover:text-darkGrayishBlue">İletişim</a>
-               </div>
-              </div>
-            </nav>
-          </header>
-          <div class="h-32 xl:h-72"></div>
+               <div id="menu" class="absolute flex-col items-center hidden text-black self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md" style="z-index: 9999; border-radius: 10px;">
+               <a href="./hakkimizda" class="hover:text-darkGrayishBlue"><?= __('Hakkımızda')?></a>
+               <a href="#services" class="hover:text-darkGrayishBlue"><?= __('Hizmetlerimiz')?></a>
+               <a href="#gallery" class="hover:text-darkGrayishBlue"><?= __('Galeri')?></a>
+               <a href="#faq" class="hover:text-darkGrayishBlue"><?= __('S.S.S')?></a>
+               <a href="#contact" class="hover:text-darkGrayishBlue"><?= __('İletişim')?></a>
+               <a class="hover:text-darkGrayishBlue flex dropdown-heading cursor-pointer" onclick="toggleDropdownMobile()">
+               <?php if(!isset($_GET['lang']) || $_GET['lang'] == 'tr') {?><img src="./public/icon/tr.svg" class="w-4 h-4 rounded-full object-cover mt-1 mr-1" alt="Türkçe">TR <?php } ?>
+               <?php if($_GET['lang'] == 'eng') {?><img src="./public/icon/en.svg" class="w-4 h-4 rounded-full object-cover mt-1 mr-1" alt="English">ENG <?php } ?>
+               <?php if($_GET['lang'] == 'ru') {?><img src="./public/icon/ru.svg" class="w-4 h-4 rounded-full object-cover mt-1 mb-1" style="border: 1px solid black;" alt="Türkçe">RU <?php } ?>
+                    <div id="dropdown-menu-mobile" class="absolute flex-col rounded-full items-center text-black self-end py-8 space-y-6 font-bold bg-white sm:w-auto sm:self-center drop-shadow-md md:w-28 flex none" style="bottom: -200px; right: 3%;">
+                        <a class="link flex items-center mr-4" style="margin-top: 5px;"><img src="./public/icon/tr.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover" alt="Türkçe" onclick="toggleDropdownMobile()">TR</a>
+                        <a href="?lang=eng" class="link flex items-center mr-4"><img src="./public/icon/en.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1" alt="English">ENG</a>
+                        <a href="?lang=ru" class="link flex items-center mr-4"><img src="./public/icon/ru.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1 mb-1" style="border: 1px solid black;" alt="Türkçe">RU</a>
+                    </div>
+               </a>
+             </div>
+            </div>
+          </nav>
+        </header>
+        <div class="h-32 xl:h-72"></div>

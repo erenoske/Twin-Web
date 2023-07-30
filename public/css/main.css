@@ -3,7 +3,9 @@
 * {
   font-family: "Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
