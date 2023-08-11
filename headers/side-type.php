@@ -11,6 +11,14 @@
     <script src='./public/js/jquery.min.js'></script>
     <script src='./public/js/jquery-ui.min.js'></script>
     <script src="./public/js/navbar-second.js"></script>
+    <style>
+      .none {
+       display: none !important;
+      }
+      .active-dropdown {
+        display: block !important;
+      }
+    </style>
   </head>
 
     <body>
@@ -21,7 +29,7 @@
     </div>
     <header id="main-nav">
             <!-- Navigation section with centered content -->
-            <nav class="fixed top-0 left-0 right-0 transition duration-300 text-black">
+            <nav class="fixed top-0 left-0 right-0 transition duration-300 text-black z-40">
               <!-- Flex container with items aligned in a row -->
               <div class="container mx-auto p-3">
                 <div class="flex items-center justify-between">
@@ -36,10 +44,20 @@
                   </a>
                   <!-- Menu Items -->
                   <div class="hidden md:flex space-x-6">
-                    <a href="./hakkimizda" class="hover:text-darkGrayishBlue">Hakkımızda</a>
-                    <a href="#" class="hover:text-darkGrayishBlue">Hizmetlerimiz</a>
-                    <a href="#" class="hover:text-darkGrayishBlue">S.S.S</a>
-                    <a href="#" class="hover:text-darkGrayishBlue">İletişim</a>
+                  <a href="./randevu" class="hover:text-darkGrayishBlue"><?= __('Rendavu Al')?></a>
+                    <a href="" class="hover:text-darkGrayishBlue"><?= __('Hakkımızda')?></a>
+                    <a href="./#services" class="hover:text-darkGrayishBlue"><?= __('Hizmetlerimiz')?></a>
+                    <a href="./#gallery" class="hover:text-darkGrayishBlue"><?= __('Galeri')?></a>
+                    <a href="./#faq" class="hover:text-darkGrayishBlue"><?= __('S.S.S')?></a>
+                    <a href="./#contact" class="hover:text-darkGrayishBlue"><?= __('İletişim')?></a>
+                    <a class="hover:text-darkGrayishBlue flex dropdown-heading cursor-pointer" onclick="toggleDropdown()">
+                    <img src="./public/icon/<?= __('TR')?>.svg" class="w-4 h-4 rounded-full object-cover mt-1 mr-1" alt="<?= __('TR')?>"><?= __('TR')?>
+                    <div id="dropdown-menu" class="absolute flex-col rounded-full items-center text-black self-end py-8 space-y-6 font-bold bg-white sm:w-auto sm:self-center drop-shadow-md md:w-28 flex none" style="bottom: -200px; right: 3%;">
+                        <a href="?lang=tr" class="link flex items-center" style="margin-top: 5px;"><img src="./public/icon/tr.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover" alt="Türkçe" onclick="toggleDropdown()">TR</a>
+                        <a href="?lang=en" class="link flex items-center"><img src="./public/icon/en.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1" alt="English">ENG</a>
+                        <a href="?lang=ru" class="link flex items-center"><img src="./public/icon/ru.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1 mb-1" style="border: 1px solid black;" alt="Türkçe">RU</a>
+                    </div>
+                    </a>
                   </div>
                   <!-- Hamburger Icon -->
                   <button id="menu-btn" class="block hamburger md:hidden focus:outline-none float-right">
@@ -51,13 +69,21 @@
               </div>
               <!-- Mobile Menu -->
               <div class="md:hidden">
-               <div id="menu" class="absolute flex-col items-center hidden text-black self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md">
-               <a href="./hakkimizda" class="hover:text-darkGrayishBlue">Hakkımızda</a>
-               <a href="#" class="hover:text-darkGrayishBlue">Hizmetlerimiz</a>
-               <a href="#" class="hover:text-darkGrayishBlue">S.S.S</a>
-               <a href="#" class="hover:text-darkGrayishBlue">İletişim</a>
-               </div>
+              <div id="menu" class="absolute flex-col items-center hidden text-black self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md" style="z-index: 9999; border-radius: 10px;">
+               <a href="./hakkimizda" class="hover:text-darkGrayishBlue"><?= __('Hakkımızda')?></a>
+               <a href="#services" class="hover:text-darkGrayishBlue"><?= __('Hizmetlerimiz')?></a>
+               <a href="#gallery" class="hover:text-darkGrayishBlue"><?= __('Galeri')?></a>
+               <a href="#faq" class="hover:text-darkGrayishBlue"><?= __('S.S.S')?></a>
+               <a href="#contact" class="hover:text-darkGrayishBlue"><?= __('İletişim')?></a>
+               <a class="hover:text-darkGrayishBlue flex dropdown-heading cursor-pointer" onclick="toggleDropdownMobile()">
+               <img src="./public/icon/<?= __('TR')?>.svg" class="w-4 h-4 rounded-full object-cover mt-1 mr-1" alt="<?= __('TR')?>"><?= __('TR')?>
+                    <div id="dropdown-menu-mobile" class="absolute flex-col rounded-full items-center text-black self-end py-8 space-y-6 font-bold bg-white sm:w-auto sm:self-center drop-shadow-md md:w-28 flex none" style="bottom: -200px; right: 3%;">
+                        <a href="?lang=tr" class="link flex items-center mr-4" style="margin-top: 5px;"><img src="./public/icon/tr.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover" alt="Türkçe" onclick="toggleDropdownMobile()">TR</a>
+                        <a href="?lang=en" class="link flex items-center mr-4"><img src="./public/icon/en.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1" alt="English">ENG</a>
+                        <a href="?lang=ru" class="link flex items-center mr-4"><img src="./public/icon/ru.svg" class="w-10 h-10 ml-5 mr-1 rounded-full object-cover mt-1 mb-1" style="border: 1px solid black;" alt="Türkçe">RU</a>
+                    </div>
+               </a>
+             </div>
               </div>
             </nav>
           </header>
-          <div class="h-32 xl:h-72"></div>

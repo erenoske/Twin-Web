@@ -4,6 +4,7 @@ $uri = $_SERVER['REQUEST_URI'];
 $routes = [
     '/erendevyedek/erendev/' => 'index',
     '/erendevyedek/erendev/hakkimizda' => 'about',
+    '/erendevyedek/erendev/randevu' => 'randevu',
     // Gerektiğinde daha fazla rota ekleyin
 ];
 

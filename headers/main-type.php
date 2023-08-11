@@ -42,7 +42,7 @@
   <div class="main-screen">
     <header id="main-nav">
             <!-- Navigation section with centered content -->
-            <nav class="fixed top-0 left-0 right-0 transition duration-300 text-white">
+            <nav class="fixed top-0 left-0 right-0 transition duration-300 text-white z-40">
               <!-- Flex container with items aligned in a row -->
               <div class="container mx-auto p-3">
                 <div class="flex items-center justify-between">
@@ -57,6 +57,7 @@
                   </a>
                   <!-- Menu Items -->
                   <div class="hidden lg:flex space-x-6">
+                    <a href="./randevu" class="hover:text-darkGrayishBlue"><?= __('Rendavu Al')?></a>
                     <a href="" class="hover:text-darkGrayishBlue"><?= __('Hakkımızda')?></a>
                     <a href="#services" class="hover:text-darkGrayishBlue"><?= __('Hizmetlerimiz')?></a>
                     <a href="#gallery" class="hover:text-darkGrayishBlue"><?= __('Galeri')?></a>

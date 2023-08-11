@@ -93,9 +93,7 @@
 
                         <div class="card-content">
                             <h2 class="name">Oyun Atölyesi</h2>
-                            <p class="description">Çocukların yaratıcılığını ve hayal gücünü geliştirmek için eğlenceli bir atölye deneyimi sunuyoruz. Oyun atölyemizde, çocuklarınız özgürce oynayarak, keşfederek ve yeni beceriler geliştirerek öğreniyorlar. Deneyimli eğitmenlerimiz eşliğinde, çocuklarınızın eğlenceli ve öğretici bir zaman geçirmesini sağlıyoruz.
-                  </p></p>
-
+                            <p class="description">Çocukların yaratıcılığını ve hayal gücünü geliştirmek için eğlenceli bir atölye deneyimi sunuyoruz. Oyun atölyemizde, çocuklarınız özgürce oynayarak, keşfederek ve yeni beceriler geliştirerek öğreniyorlar. Deneyimli eğitmenlerimiz eşliğinde, çocuklarınızın eğlenceli ve öğretici bir zaman geçirmesini sağlıyoruz.</p>
                             <button class="button">Daha Fazla Göster</button>
                         </div>
                     </div>
